@@ -24,7 +24,7 @@
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
-    output   = "",
+    output   = "DP-4",
     mode     = "3440x1440@120",
     position = "auto",
     scale    = "1.07",
@@ -40,6 +40,8 @@ local terminal    = "kitty"
 local fileManager = "nautilus"
 local menu        = "wofi --show drun -i"
 local browser     = "firefox"
+local env_vars = {["XDG_CURRENT_DESKTOP"] = "Hyprland"}
+
 
 
 -------------------
@@ -53,9 +55,13 @@ local browser     = "firefox"
 
 hl.on("hyprland.start", function () 
 --  hl.exec_cmd(terminal)
-  hl.exec_cmd("nm-applet & gnome-keyring-daemon --start -d --components=secrets")
-  hl.exec_cmd("waybar & hyprpaper")
+  hl.exec_cmd("nm-applet & gnome-keyring-daemon --start -d --components=secrets & hyprpolkitagent")
+  hl.exec_cmd("waybar & hyprpaper & swaync & xwaylandvideobridge")
 end)
+-- next lines fix pipewire for screen recording or something
+--hl.on("hyprland.start", function()
+--    hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
+--end)
 
                          -------------------------------
                          ---- ENVIRONMENT VARIABLES ----
