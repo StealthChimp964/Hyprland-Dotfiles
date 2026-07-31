@@ -41,7 +41,7 @@ local fileManager = "nautilus"
 local menu        = "wofi --show drun -i"
 local browser     = "firefox"
 local env_vars = {["XDG_CURRENT_DESKTOP"] = "Hyprland"}
-
+local discord ="flatpak run dev.vencord.Vesktop"
 
 
 -------------------
@@ -325,6 +325,7 @@ hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = tr
 hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m window"))
 hl.bind("SHIFT + PRINT", hl.dsp.exec_cmd("hyprshot -m region"))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
+hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(discord))
 
 
 
